@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+## Examples for new pandas users summary
 
-You can use the [editor on GitHub](https://github.com/EstherBaili/my-examples/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+#### I find after learn from the examples, making yourown user case is very helpful to check understanding and see if you are really able to use them solve problems. Learning by doing is a very effective way. Let us start with an example I made:
+use function random.randin and for loop based on certain lists you basically can create a dtaset as large, time is a normal index especailly in time serises data so creating date with pd.date_range is also useful. Assigning data, index and columns respectively, a dataset is made. Then, other functions can be used to practice abstracting subdataset, manipulating date to answer questions.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I first created a dataset with dates as index, name, age, nationality etc as columns. I asked myself to answer "an odd" question: "Does the popularity of different names chage with time? " This is a classic question to practice abstract subdataset. I first used df.sort_index() to make the date index in desending order. after that I used df.reset_index().groupby().sum() to first divide dataset by Names, second by year, then sum up the number of each group, question answered. Basically three lines of code.
 
-### Markdown
+You can try to answer "Are there more female migrants than male migrants from different country?"
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/EstherBaili/my-examples/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Remember that you will encounter problems that seems very simple and easy but you just do not know where went wrong! Be patient with yourself, nothing wring with you, the language of machine is dull and picky, you have to first follow its rules, second do not be afraid of trying, make every possible changes to see what happen, start from simple version. Even many times your problem isnt solved but you learn something.  

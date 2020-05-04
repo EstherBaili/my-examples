@@ -32,3 +32,40 @@ So when you have done your best to trail and error, read docs ask for help, put 
 
 [Question posted here:]
 (https://stackoverflow.com/questions/61558919/transforms-cannot-produce-aggregated-results-with-lambda-function-that-produced)
+
+##4/May/2020 third example
+### A bit about debiugging using today's example.
+
+I had an example on how to formatting URL to automatically getting data from website. 
+```
+url_template = "http://climate.weather.gc.ca/climateData/bulkdata_e.html?format=csv&stationID=5415&Year={year}&Month={month}&timeframe=1&submit=Download+Data"
+url = url_template.format(month=3, year=2012)
+weather_mar2012 = pd.read_csv(url, skiprows=16, index_col='Date/Time', parse_dates=True, encoding='latin1')
+```
+It is a weather data from Canadian government.
+But the origianl page no longer exists, it seems they have changed the data structure. 
+
+I manually found the relevent data, I need to change the URL. Because I don't know the right URL to use to download the data as the data downloaded through cliking button. I used the URL of the web which presenting and the download button included. It has a similar format with the URL from the example. 
+```
+https://climate.weather.gc.ca/climate_data/daily_data_e.html?timeframe=2&hlyRange=%7C&dlyRange=1979-06-01%7C2020-01-31&mlyRange=1979-01-01%7C2018-02-01&StationID=5619&Prov=QC&urlExtension=_e.html&searchType=stnProv&optLimit=specDate&StartYear=1840&EndYear=2020&selRowPerPage=25&Line=145&lstProvince=QC&Day=30&Year=2012&Month=3#
+```
+But there is an error when running the code.
+
+It could be two possible reasons: 
+- one is the data wasn't successfully downloaded, it is not the right URL
+- the other is the formatting of the dowloaded data somehow caused that.  
+
+To identify the root cause, manually download the data file, save in local computer, pd_csv_read through local path, 
+···
+weather_mar2012 = pd.read_csv('C:/Users/li116/OneDrive/Desktop/python project/python tutorial/en_climate_daily_QC_7035666_2012_P1D.csv')
+weather_mar2012
+···
+there was no error which means must be the URL not the right one to use.
+
+Therefore, the next step to solve the problem is to find how how to find the URL of clicking downloading button. I did some reasech: so on the page, right click to choose insepct, then choose network and refresh the web page, in bottom of the right hand side, there are URLs that are consists of the page. I found the one with exact format with the example. So it is that! Problem Sloved.
+（https://climate.weather.gc.ca/climate_data/daily_data_e.html?timeframe=2&hlyRange=%7C&dlyRange=1979-06-01%7C2020-01-31&mlyRange=1979-01-01%7C2018-02-01&StationID=5619&Prov=QC&urlExtension=_e.html&searchType=stnProv&optLimit=specDate&StartYear=1840&EndYear=2020&selRowPerPage=25&Line=145&lstProvince=QC&Day=30&Year=2012&Month=3#&submit=Download+Data）
+
+In conclusion, for a successful debugging, first clearly identify relevent causes, by clearly, means need to be able to articulate the potential cause.（e.g: the data was not successfully downloaded that casued unable to read in data. or, the data had been downloaded but the options of read_csv chosen caused not able to parse data correctly. ) Secondly, exclude theose potentail caused one by one, it is important to exclude those that is independent to other caused first, as sometimes the problem can due to sereral factors. 
+
+Debugging is fun and is also where you learn the most! So when there is a problem, do not be afraid, see it an oppotunity to learn, do not be caught by emotions.
+

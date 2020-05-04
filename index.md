@@ -56,15 +56,15 @@ It could be two possible reasons:
 - the other is the formatting of the dowloaded data somehow caused that.  
 
 To identify the root cause, manually download the data file, save in local computer, pd_csv_read through local path, 
-···
+```
 weather_mar2012 = pd.read_csv('C:/Users/li116/OneDrive/Desktop/python project/python tutorial/en_climate_daily_QC_7035666_2012_P1D.csv')
 weather_mar2012
-···
+```
 there was no error which means must be the URL not the right one to use.
 
 Therefore, the next step to solve the problem is to find how how to find the URL of clicking downloading button. I did some reasech: so on the page, right click to choose insepct, then choose network and refresh the web page, in bottom of the right hand side, there are URLs that are consists of the page. I found the one with exact format with the example. So it is that! Problem Sloved.
 
-[the page]（https://climate.weather.gc.ca/climate_data/daily_data_e.html?timeframe=2&hlyRange=%7C&dlyRange=1979-06-01%7C2020-01-31&mlyRange=1979-01-01%7C2018-02-01&StationID=5619&Prov=QC&urlExtension=_e.html&searchType=stnProv&optLimit=specDate&StartYear=1840&EndYear=2020&selRowPerPage=25&Line=145&lstProvince=QC&Day=30&Year=2012&Month=3#&submit=Download+Data）
+[the page]:（https://climate.weather.gc.ca/climate_data/daily_data_e.html?timeframe=2&hlyRange=%7C&dlyRange=1979-06-01%7C2020-01-31&mlyRange=1979-01-01%7C2018-02-01&StationID=5619&Prov=QC&urlExtension=_e.html&searchType=stnProv&optLimit=specDate&StartYear=1840&EndYear=2020&selRowPerPage=25&Line=145&lstProvince=QC&Day=30&Year=2012&Month=3#&submit=Download+Data）
 
 In conclusion, for a successful debugging, first clearly identify relevent causes, by clearly, means need to be able to articulate the potential cause.（e.g: the data was not successfully downloaded that casued unable to read in data. or, the data had been downloaded but the options of read_csv chosen caused not able to parse data correctly. ) Secondly, exclude theose potentail caused one by one, it is important to exclude those that is independent to other caused first, as sometimes the problem can due to sereral factors. 
 

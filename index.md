@@ -34,7 +34,7 @@ So when you have done your best to trail and error, read docs ask for help, put 
 (https://stackoverflow.com/questions/61558919/transforms-cannot-produce-aggregated-results-with-lambda-function-that-produced)
 
 ## 4/May/2020 third example
-### A bit about debiugging using today's example.
+### A bit about debugging using today's example.
 
 I had an example on how to formatting URL to automatically getting data from website. 
 ```
@@ -70,3 +70,4 @@ In conclusion, for a successful debugging, first clearly identify relevent cause
 
 Debugging is fun and is also where you learn the most! So when there is a problem, do not be afraid, see it an oppotunity to learn, do not be caught by emotions.
 
+#### another experience is that sometimes error occur due to version updates, the same function in different version might changed options in it. Hence some of the options no longer exists.

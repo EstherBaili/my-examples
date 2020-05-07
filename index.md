@@ -71,3 +71,15 @@ In conclusion, for a successful debugging, first clearly identify relevent cause
 Debugging is fun and is also where you learn the most! So when there is a problem, do not be afraid, see it an oppotunity to learn, do not be caught by emotions.
 
 #### another experience is that sometimes error occur due to version updates, the same function in different version might changed options in it. Hence some of the options no longer exists.
+
+## 7/May/2020 the example is from pandas cookbook lesson 7 clean up messy data
+- How to clean up data, there are some general rules and sepcific rules. The general rule normally include deal with missing data, wrong data, make data the same type. Such as below case:
+In the case there are 'unknown', 'not sure', 'n/a' use pd.read_csv(na_values = )
+In the case need to change data type into string(e.g. numbers and strings in the same column) to make it easier to manipulate pd.read_csv(dtype = {'': str})
+
+ - While specific rules more depends on the characteristics of the data, e.g. for zip code there is normally fixed format and length:
+In the case checking on data that contains special signs: df[coumne_name].str.contain()
+In the case there is zip code as 00000: zips[zips == '000000'] = np.nan
+In the case need to trancate: zips = zips.str.slice(0, 5)
+
+#### Based on the characteristics of data (particular format, length, combination, etc) and how the data will be used to make the decidesion on how to clean up.
